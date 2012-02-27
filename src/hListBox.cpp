@@ -36,8 +36,8 @@
 #include "ofxXmlSettings.h"
 #include <typeinfo>
 
-//--------------------------------------------------------------
 
+//--------------------------------------------------------------
 hListBox::hListBox(std::string name, hPanel * parent, int dispMode, int xx, int yy, int width)
 	: hPanel(name, parent, dispMode, xx, yy, width, hGui::getInstance()->buttonHeight, true)
 {
@@ -151,7 +151,8 @@ void hListBox::addData(std::string label)
     newData->indexShift10  = indexShift10;
     newData->indexShift100 = indexShift100;
 
-    newData->message = "";
+    //newData->message = "";
+    newData->message = this->message;
 
 	if(data_buffer.size() > widgets.size())
         addScrollBar(); // We add it only here because we need the real size of h
@@ -423,6 +424,7 @@ void hListBox::setLinkedNumberBox(hNumberBox * numberBoxWidget)
 void hListBox::setMessage(string s)
 {
     int size = data_buffer.size();
+    this->message = s;
     for(int i = 0; i < size; ++i)
         data_buffer[i]->message = s;
 }
@@ -509,3 +511,7 @@ void hListBox::saveSettings(ofxXmlSettings * xml)
 
 //--------------------------------------------------------------
 
+
+hScrollBar * hListBox::getScrollBar() {
+	return this->scrollBar;
+}

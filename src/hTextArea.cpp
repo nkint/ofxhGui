@@ -242,7 +242,7 @@ void hTextArea::draw()
                     yPos = y+(gui->ftextHeight * (lineIndex+1));
                     xPos = x+(charWidth*charIndex);
                     if((unsigned int)s[0] > 31) { // control characters (specially CR) are drawed as ||
-                        hDrawString(gui->ffont, s, xPos+3, yPos);
+                        hDrawString(gui->ffont, s, xPos+4, yPos);
                     }
                     /*  // we need no more to display the <return> character
 					 // BUT KEEP IT SO (maybe it could be put in preferences later)

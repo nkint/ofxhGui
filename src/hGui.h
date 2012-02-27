@@ -220,7 +220,8 @@ public :
 	// Helper methods and tests:
 	//  (Helper methods should not be called directly)
 	
-	void addWidget(hWidget * widget); 
+	void addWidget(hWidget * widget);
+	hWidget * getWidget(std::string widgetname);
 	void removeWidget(hWidget * widget); 
 	void listWidgets(void); 
 	

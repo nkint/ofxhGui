@@ -90,7 +90,10 @@ void hListItem::setMessage(string s)
 
 void hListItem::bang(void)
 {
+	//cout << "hListItem::bang - data->message :" << data->message << data->label << data->index << data->selected << endl;
+
     if(data->message.size() > 0) {
+    	//cout << "hListItem::bang - data->message :" << data->message << data->label << data->index << data->selected << endl;
         hEvents::getInstance()->sendEvent(data->message, data->label, data->index, data->selected);
     }
 }
@@ -150,9 +153,11 @@ void hListItem::draw(void)
 
 void hListItem::mousePressed(int xx, int yy, int btn)
 {
-	// cout << "hListItem::mousePressed: " << getData()->name << endl;
+	//cout << "hListItem::mousePressed 1: " << getData()->name << endl;
 
     if(data->disabled == true) return;
+
+    //cout << "hListItem::mousePressed 2: " << getData()->name << endl;
 
     toggleSelection();
 
@@ -175,8 +180,13 @@ void hListItem::mousePressed(int xx, int yy, int btn)
         }
         // else cout << "linkedNumberBox = NULL" << endl;
 
-        if(sendWhenReleasedFlag == false)
+        //cout << "hListItem::mousePressed 3: " << getData()->name << endl;
+
+        if(sendWhenReleasedFlag == false) {
+            //cout << "hListItem::mousePressed 4: " << getData()->name << endl;
             bang();
+        }
+
 	// }
 }
 

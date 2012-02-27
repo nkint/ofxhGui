@@ -57,6 +57,7 @@ public:
 	// first element = #1
 	// Note: there is no unselectItem method for tab boxes
 
+	int getSelectedItem();
 
 	//--------------------------------------------------------
 	
@@ -85,6 +86,8 @@ public:
 protected:
     hPanel * mainTabSelectionPanel;
     hPanel * curTabSelectionPanel;
+
+    int selected_item;
 };
 
 //--------------------------------------------------------

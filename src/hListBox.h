@@ -196,6 +196,7 @@ public:
 	
 	//--------------------------------------------------------
 	
+	hScrollBar * getScrollBar();
 protected:
 friend class hScrollBar;
 friend class hScrollButton;
@@ -211,6 +212,8 @@ friend class hScrollButton;
 
 	hScrollBar * scrollBar;
     hScrollButton * incButton, * decButton;
+
+    std::string message;
 };
 
 //--------------------------------------------------------

@@ -51,6 +51,8 @@ hTabBox::hTabBox(std::string name, hPanel * parent, int dispMode, int xx, int yy
     setSelectColor(gui->tabBoxSelColor);
 
 	x += 2; // little correction
+
+	this->selected_item = 1;
 }
 
 //--------------------------------------------------------------
@@ -121,6 +123,10 @@ void hTabBox::setItemPanel(int item, hPanel * panel)
 
 //--------------------------------------------------------------
 
+int hTabBox::getSelectedItem() {
+	return this->selected_item;
+}
+
 void hTabBox::selectItem(int item)
 // Uses only items, not just data elements (not scrollable)
 {
@@ -128,6 +134,9 @@ void hTabBox::selectItem(int item)
 		if(item <= widgets.size()) {
             hTabBoxItem * itemPtr = dynamic_cast<hTabBoxItem *>(widgets[item]);
             if(itemPtr != NULL) {
+
+            	this->selected_item = item;
+
                 hPanel * linkedPanel = itemPtr->getLinkedPanel();
                 if(linkedPanel != NULL)
                     storeItemPanel(linkedPanel);
@@ -161,6 +170,15 @@ void hTabBox::mousePressed(int xx, int yy, int btn)
 
         hTabBoxItem * itemPtr = dynamic_cast<hTabBoxItem *>(widget);
         if(itemPtr != NULL) {
+
+        	int item = -1;
+			for(int i=0; i<widgets.size(); i++) {
+				if(widgets[i]==widget) {
+					item=i; break;
+				}
+			}
+			if(item!=-1) this->selected_item = item;
+
             // cout << "it's a hTabBoxItem: " << itemPtr << endl;
             hPanel * linkedPanel = itemPtr->getLinkedPanel();
             if(linkedPanel != NULL) {

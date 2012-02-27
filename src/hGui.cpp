@@ -561,6 +561,14 @@ void hGui::removeWidget(hWidget * widget)
 	}
 }
 
+hWidget * hGui::getWidget(std::string widgetname) {
+	int size = widgets.size();
+	for(int i=0; i < size; ++i) {
+		if (widgets[i]->getData()->name == widgetname)
+			return widgets[i];
+	}
+}
+
 // ---------------------------------------------------------------
 //									TESTS
 // ---------------------------------------------------------------
